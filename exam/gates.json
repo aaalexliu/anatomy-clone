@@ -1,0 +1,18 @@
+{
+  "joint_path": {
+    "mean_abs_deg_max": 10,
+    "max_abs_deg_max": 20,
+    "min_visible_fraction": 0.7,
+    "major_coordinates": [
+      "hip_flexion",
+      "knee_flexion",
+      "shoulder_flexion",
+      "elbow_flexion"
+    ]
+  },
+  "muscle_role": {
+    "top5_overlap_min": 0.6,
+    "score_frame": "middle sample of muscle_roles",
+    "definition": "Working roles are prime_mover, synergist, and stabilizer. Predicted top 5 are those roles ordered by prime, then synergist, then stabilizer, then by descending emission score. overlap = |predicted top 5 ∩ reference working set| / min(5, |reference working set|). A predicted prime mover fails the sign check when its frozen action-table sign disagrees with the claimed task moment on a task coordinate, or when it agrees with none."
+  }
+}

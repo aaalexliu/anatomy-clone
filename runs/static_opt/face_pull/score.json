@@ -1,0 +1,47 @@
+{
+  "prototype_id": "static_opt",
+  "item_id": "face_pull",
+  "overall": {
+    "status": "fail",
+    "reason": "Prime mover with the wrong moment-arm sign: triceps_brachii (no agreeing task coordinate)."
+  },
+  "legality": {
+    "status": "pass",
+    "reason": "Every frame is inside toy_sagittal_v1 limits."
+  },
+  "joint_path": {
+    "status": "abstain",
+    "reason": "No held-out track."
+  },
+  "muscle_role": {
+    "status": "fail",
+    "reason": "Prime mover with the wrong moment-arm sign: triceps_brachii (no agreeing task coordinate).",
+    "overlap": 1.0,
+    "predicted_top5": [
+      "infraspinatus",
+      "lower_trapezius",
+      "middle_trapezius",
+      "rhomboid_major",
+      "teres_minor"
+    ],
+    "reference_working": [
+      "posterior_deltoid",
+      "infraspinatus",
+      "teres_minor",
+      "middle_trapezius",
+      "lower_trapezius",
+      "rhomboid_major"
+    ],
+    "sign_violations": [
+      "triceps_brachii (no agreeing task coordinate)"
+    ]
+  },
+  "negative_control": {
+    "status": "not_applicable",
+    "reason": "This item is not a negative control."
+  },
+  "force_couple": {
+    "status": "not_applicable",
+    "reason": "This item has no force-couple claim."
+  }
+}

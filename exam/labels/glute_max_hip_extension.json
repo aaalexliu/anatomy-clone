@@ -1,0 +1,8 @@
+{
+  "id": "glute_max_hip_extension",
+  "prime_movers": ["gluteus_maximus"],
+  "synergists": ["biceps_femoris"],
+  "stabilizers": [],
+  "antagonists": ["iliopsoas"],
+  "source": "Textbook hip extension, frozen before any prototype run: gluteus maximus is the prime mover, biceps femoris assists, and iliopsoas opposes. Not taken from Muscle & Motion."
+}

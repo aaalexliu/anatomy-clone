@@ -1,0 +1,8 @@
+{
+  "id": "triceps_extension",
+  "prime_movers": ["triceps_brachii"],
+  "synergists": [],
+  "stabilizers": [],
+  "antagonists": ["biceps_brachii", "brachialis"],
+  "source": "Textbook elbow extension, frozen before any prototype run: triceps brachii is the prime mover; biceps brachii and brachialis oppose. Not taken from Muscle & Motion."
+}

@@ -1,0 +1,807 @@
+{
+  "banner": "model estimate, not EMG",
+  "prototypes": [
+    {
+      "id": "moment_arm",
+      "name": "Finite-difference moment arm"
+    },
+    {
+      "id": "static_opt",
+      "name": "Static optimization"
+    }
+  ],
+  "items": [
+    {
+      "id": "biceps_flexion",
+      "name": "Biceps flexion",
+      "note": "Isolate. No external load.",
+      "negative_control": false
+    },
+    {
+      "id": "triceps_extension",
+      "name": "Triceps extension",
+      "note": "Isolate. No external load.",
+      "negative_control": false
+    },
+    {
+      "id": "glute_max_hip_extension",
+      "name": "Glute max hip extension",
+      "note": "Isolate. No external load.",
+      "negative_control": false
+    },
+    {
+      "id": "elbow_extension_as_biceps_curl",
+      "name": "Biceps curl",
+      "note": "Elbow-extension clip labeled as a biceps curl",
+      "negative_control": true
+    },
+    {
+      "id": "squat",
+      "name": "Squat",
+      "note": "Scripted squat with a vertical load over the midfoot. No held-out person track.",
+      "negative_control": false
+    },
+    {
+      "id": "face_pull",
+      "name": "Face pull",
+      "note": "Scripted face pull. The load is a cable pulling forward from the hands. No held-out person track.",
+      "negative_control": false
+    },
+    {
+      "id": "rotator_cuff_force_couple",
+      "name": "Rotator-cuff couple",
+      "note": "Teaching claim: subscapularis opposes infraspinatus and teres minor. Not a pose match.",
+      "negative_control": false
+    },
+    {
+      "id": "lat_pulldown_as_face_pull",
+      "name": "Face pull",
+      "note": "Lat pulldown clip labeled as a face pull",
+      "negative_control": true
+    }
+  ],
+  "cells": [
+    {
+      "prototype_id": "moment_arm",
+      "item_id": "biceps_flexion",
+      "status": "pass",
+      "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign. No held-out track.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "pass",
+          "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 1.0,
+        "predicted_top5": [
+          "biceps_brachii",
+          "brachioradialis",
+          "brachialis",
+          "posterior_deltoid",
+          "latissimus_dorsi"
+        ],
+        "reference_working": [
+          "biceps_brachii",
+          "brachialis",
+          "brachioradialis"
+        ],
+        "sign_violations": []
+      },
+      "score_path": "moment_arm/biceps_flexion/score.json",
+      "emission_path": "moment_arm/biceps_flexion/emission.json",
+      "playback_path": "moment_arm/biceps_flexion/playback.json"
+    },
+    {
+      "prototype_id": "moment_arm",
+      "item_id": "triceps_extension",
+      "status": "pass",
+      "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign. No held-out track.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "pass",
+          "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 1.0,
+        "predicted_top5": [
+          "triceps_brachii",
+          "anterior_deltoid"
+        ],
+        "reference_working": [
+          "triceps_brachii"
+        ],
+        "sign_violations": []
+      },
+      "score_path": "moment_arm/triceps_extension/score.json",
+      "emission_path": "moment_arm/triceps_extension/emission.json",
+      "playback_path": "moment_arm/triceps_extension/playback.json"
+    },
+    {
+      "prototype_id": "moment_arm",
+      "item_id": "glute_max_hip_extension",
+      "status": "pass",
+      "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign. No held-out track.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "pass",
+          "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 1.0,
+        "predicted_top5": [
+          "gluteus_maximus",
+          "biceps_femoris",
+          "vastus_lateralis"
+        ],
+        "reference_working": [
+          "gluteus_maximus",
+          "biceps_femoris"
+        ],
+        "sign_violations": []
+      },
+      "score_path": "moment_arm/glute_max_hip_extension/score.json",
+      "emission_path": "moment_arm/glute_max_hip_extension/emission.json",
+      "playback_path": "moment_arm/glute_max_hip_extension/playback.json"
+    },
+    {
+      "prototype_id": "moment_arm",
+      "item_id": "elbow_extension_as_biceps_curl",
+      "status": "pass",
+      "reason": "Muscle role failed, as required for a negative control.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "fail",
+          "reason": "Prime mover with the wrong moment-arm sign: triceps_brachii (elbow_flexion sign -1 against required +1)."
+        },
+        "negative_control": {
+          "status": "pass",
+          "reason": "Muscle role failed, as required for a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 0.0,
+        "predicted_top5": [
+          "triceps_brachii",
+          "anterior_deltoid"
+        ],
+        "reference_working": [
+          "biceps_brachii",
+          "brachialis",
+          "brachioradialis"
+        ],
+        "sign_violations": [
+          "triceps_brachii (elbow_flexion sign -1 against required +1)"
+        ]
+      },
+      "score_path": "moment_arm/elbow_extension_as_biceps_curl/score.json",
+      "emission_path": "moment_arm/elbow_extension_as_biceps_curl/emission.json",
+      "playback_path": "moment_arm/elbow_extension_as_biceps_curl/playback.json"
+    },
+    {
+      "prototype_id": "moment_arm",
+      "item_id": "squat",
+      "status": "pass",
+      "reason": "Top-5 overlap 0.67. Prime movers match the action-table sign. No held-out track.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "pass",
+          "reason": "Top-5 overlap 0.67. Prime movers match the action-table sign."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 0.6667,
+        "predicted_top5": [
+          "gluteus_maximus",
+          "vastus_lateralis"
+        ],
+        "reference_working": [
+          "gluteus_maximus",
+          "vastus_lateralis",
+          "biceps_femoris"
+        ],
+        "sign_violations": []
+      },
+      "score_path": "moment_arm/squat/score.json",
+      "emission_path": "moment_arm/squat/emission.json",
+      "playback_path": "moment_arm/squat/playback.json"
+    },
+    {
+      "prototype_id": "moment_arm",
+      "item_id": "face_pull",
+      "status": "pass",
+      "reason": "Top-5 overlap 0.80. Prime movers match the action-table sign. No held-out track.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "pass",
+          "reason": "Top-5 overlap 0.80. Prime movers match the action-table sign."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 0.8,
+        "predicted_top5": [
+          "posterior_deltoid",
+          "middle_trapezius",
+          "rhomboid_major",
+          "lower_trapezius",
+          "triceps_brachii"
+        ],
+        "reference_working": [
+          "posterior_deltoid",
+          "infraspinatus",
+          "teres_minor",
+          "middle_trapezius",
+          "lower_trapezius",
+          "rhomboid_major"
+        ],
+        "sign_violations": []
+      },
+      "score_path": "moment_arm/face_pull/score.json",
+      "emission_path": "moment_arm/face_pull/emission.json",
+      "playback_path": "moment_arm/face_pull/playback.json"
+    },
+    {
+      "prototype_id": "moment_arm",
+      "item_id": "rotator_cuff_force_couple",
+      "status": "pass",
+      "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign. No held-out track.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "pass",
+          "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "pass",
+          "reason": "subscapularis (opposed) opposes infraspinatus, teres_minor (mover)."
+        }
+      },
+      "muscle_role": {
+        "overlap": 1.0,
+        "predicted_top5": [
+          "infraspinatus",
+          "teres_minor",
+          "supraspinatus",
+          "middle_trapezius",
+          "rhomboid_major"
+        ],
+        "reference_working": [
+          "infraspinatus",
+          "teres_minor"
+        ],
+        "sign_violations": []
+      },
+      "score_path": "moment_arm/rotator_cuff_force_couple/score.json",
+      "emission_path": "moment_arm/rotator_cuff_force_couple/emission.json",
+      "playback_path": "moment_arm/rotator_cuff_force_couple/playback.json"
+    },
+    {
+      "prototype_id": "moment_arm",
+      "item_id": "lat_pulldown_as_face_pull",
+      "status": "pass",
+      "reason": "Muscle role failed, as required for a negative control.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "fail",
+          "reason": "Prime mover with the wrong moment-arm sign: subscapularis (shoulder_external_rotation sign -1 against required +1); pectoralis_major (shoulder_horizontal_abduction sign -1 against required +1; shoulder_external_rotation sign -1 against required +1)."
+        },
+        "negative_control": {
+          "status": "pass",
+          "reason": "Muscle role failed, as required for a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 0.0,
+        "predicted_top5": [
+          "subscapularis",
+          "pectoralis_major",
+          "biceps_brachii",
+          "latissimus_dorsi",
+          "brachioradialis"
+        ],
+        "reference_working": [
+          "posterior_deltoid",
+          "infraspinatus",
+          "teres_minor",
+          "middle_trapezius",
+          "lower_trapezius",
+          "rhomboid_major"
+        ],
+        "sign_violations": [
+          "subscapularis (shoulder_external_rotation sign -1 against required +1)",
+          "pectoralis_major (shoulder_horizontal_abduction sign -1 against required +1; shoulder_external_rotation sign -1 against required +1)"
+        ]
+      },
+      "score_path": "moment_arm/lat_pulldown_as_face_pull/score.json",
+      "emission_path": "moment_arm/lat_pulldown_as_face_pull/emission.json",
+      "playback_path": "moment_arm/lat_pulldown_as_face_pull/playback.json"
+    },
+    {
+      "prototype_id": "static_opt",
+      "item_id": "biceps_flexion",
+      "status": "pass",
+      "reason": "Top-5 overlap 0.67. Prime movers match the action-table sign. No held-out track.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "pass",
+          "reason": "Top-5 overlap 0.67. Prime movers match the action-table sign."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 0.6667,
+        "predicted_top5": [
+          "brachialis",
+          "biceps_brachii"
+        ],
+        "reference_working": [
+          "biceps_brachii",
+          "brachialis",
+          "brachioradialis"
+        ],
+        "sign_violations": []
+      },
+      "score_path": "static_opt/biceps_flexion/score.json",
+      "emission_path": "static_opt/biceps_flexion/emission.json",
+      "playback_path": "static_opt/biceps_flexion/playback.json"
+    },
+    {
+      "prototype_id": "static_opt",
+      "item_id": "triceps_extension",
+      "status": "pass",
+      "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign. No held-out track.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "pass",
+          "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 1.0,
+        "predicted_top5": [
+          "triceps_brachii",
+          "anterior_deltoid",
+          "pectoralis_major"
+        ],
+        "reference_working": [
+          "triceps_brachii"
+        ],
+        "sign_violations": []
+      },
+      "score_path": "static_opt/triceps_extension/score.json",
+      "emission_path": "static_opt/triceps_extension/emission.json",
+      "playback_path": "static_opt/triceps_extension/playback.json"
+    },
+    {
+      "prototype_id": "static_opt",
+      "item_id": "glute_max_hip_extension",
+      "status": "fail",
+      "reason": "Top-5 overlap 0.50 is below 0.60. Predicted gluteus_maximus; reference gluteus_maximus, biceps_femoris.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "fail",
+          "reason": "Top-5 overlap 0.50 is below 0.60. Predicted gluteus_maximus; reference gluteus_maximus, biceps_femoris."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 0.5,
+        "predicted_top5": [
+          "gluteus_maximus"
+        ],
+        "reference_working": [
+          "gluteus_maximus",
+          "biceps_femoris"
+        ],
+        "sign_violations": []
+      },
+      "score_path": "static_opt/glute_max_hip_extension/score.json",
+      "emission_path": "static_opt/glute_max_hip_extension/emission.json",
+      "playback_path": "static_opt/glute_max_hip_extension/playback.json"
+    },
+    {
+      "prototype_id": "static_opt",
+      "item_id": "elbow_extension_as_biceps_curl",
+      "status": "pass",
+      "reason": "Muscle role failed, as required for a negative control.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "fail",
+          "reason": "Prime mover with the wrong moment-arm sign: triceps_brachii (elbow_flexion sign -1 against required +1)."
+        },
+        "negative_control": {
+          "status": "pass",
+          "reason": "Muscle role failed, as required for a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 0.0,
+        "predicted_top5": [
+          "triceps_brachii",
+          "anterior_deltoid",
+          "pectoralis_major"
+        ],
+        "reference_working": [
+          "biceps_brachii",
+          "brachialis",
+          "brachioradialis"
+        ],
+        "sign_violations": [
+          "triceps_brachii (elbow_flexion sign -1 against required +1)"
+        ]
+      },
+      "score_path": "static_opt/elbow_extension_as_biceps_curl/score.json",
+      "emission_path": "static_opt/elbow_extension_as_biceps_curl/emission.json",
+      "playback_path": "static_opt/elbow_extension_as_biceps_curl/playback.json"
+    },
+    {
+      "prototype_id": "static_opt",
+      "item_id": "squat",
+      "status": "pass",
+      "reason": "Top-5 overlap 0.67. Prime movers match the action-table sign. No held-out track.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "pass",
+          "reason": "Top-5 overlap 0.67. Prime movers match the action-table sign."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 0.6667,
+        "predicted_top5": [
+          "vastus_lateralis",
+          "gluteus_maximus"
+        ],
+        "reference_working": [
+          "gluteus_maximus",
+          "vastus_lateralis",
+          "biceps_femoris"
+        ],
+        "sign_violations": []
+      },
+      "score_path": "static_opt/squat/score.json",
+      "emission_path": "static_opt/squat/emission.json",
+      "playback_path": "static_opt/squat/playback.json"
+    },
+    {
+      "prototype_id": "static_opt",
+      "item_id": "face_pull",
+      "status": "fail",
+      "reason": "Prime mover with the wrong moment-arm sign: triceps_brachii (no agreeing task coordinate).",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "fail",
+          "reason": "Prime mover with the wrong moment-arm sign: triceps_brachii (no agreeing task coordinate)."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 1.0,
+        "predicted_top5": [
+          "infraspinatus",
+          "lower_trapezius",
+          "middle_trapezius",
+          "rhomboid_major",
+          "teres_minor"
+        ],
+        "reference_working": [
+          "posterior_deltoid",
+          "infraspinatus",
+          "teres_minor",
+          "middle_trapezius",
+          "lower_trapezius",
+          "rhomboid_major"
+        ],
+        "sign_violations": [
+          "triceps_brachii (no agreeing task coordinate)"
+        ]
+      },
+      "score_path": "static_opt/face_pull/score.json",
+      "emission_path": "static_opt/face_pull/emission.json",
+      "playback_path": "static_opt/face_pull/playback.json"
+    },
+    {
+      "prototype_id": "static_opt",
+      "item_id": "rotator_cuff_force_couple",
+      "status": "fail",
+      "reason": "One side of the force couple is missing from the roles.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "pass",
+          "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign."
+        },
+        "negative_control": {
+          "status": "not_applicable",
+          "reason": "This item is not a negative control."
+        },
+        "force_couple": {
+          "status": "fail",
+          "reason": "One side of the force couple is missing from the roles."
+        }
+      },
+      "muscle_role": {
+        "overlap": 1.0,
+        "predicted_top5": [
+          "infraspinatus",
+          "teres_minor",
+          "supraspinatus"
+        ],
+        "reference_working": [
+          "infraspinatus",
+          "teres_minor"
+        ],
+        "sign_violations": []
+      },
+      "score_path": "static_opt/rotator_cuff_force_couple/score.json",
+      "emission_path": "static_opt/rotator_cuff_force_couple/emission.json",
+      "playback_path": "static_opt/rotator_cuff_force_couple/playback.json"
+    },
+    {
+      "prototype_id": "static_opt",
+      "item_id": "lat_pulldown_as_face_pull",
+      "status": "pass",
+      "reason": "Muscle role failed, as required for a negative control.",
+      "scores": {
+        "legality": {
+          "status": "pass",
+          "reason": "Every frame is inside toy_sagittal_v1 limits."
+        },
+        "joint_path": {
+          "status": "abstain",
+          "reason": "No held-out track."
+        },
+        "muscle_role": {
+          "status": "fail",
+          "reason": "Prime mover with the wrong moment-arm sign: brachialis (no agreeing task coordinate); brachioradialis (no agreeing task coordinate); anterior_deltoid (no agreeing task coordinate); latissimus_dorsi (shoulder_external_rotation sign -1 against required +1)."
+        },
+        "negative_control": {
+          "status": "pass",
+          "reason": "Muscle role failed, as required for a negative control."
+        },
+        "force_couple": {
+          "status": "not_applicable",
+          "reason": "This item has no force-couple claim."
+        }
+      },
+      "muscle_role": {
+        "overlap": 0.0,
+        "predicted_top5": [
+          "brachialis",
+          "latissimus_dorsi",
+          "anterior_deltoid",
+          "brachioradialis"
+        ],
+        "reference_working": [
+          "posterior_deltoid",
+          "infraspinatus",
+          "teres_minor",
+          "middle_trapezius",
+          "lower_trapezius",
+          "rhomboid_major"
+        ],
+        "sign_violations": [
+          "brachialis (no agreeing task coordinate)",
+          "brachioradialis (no agreeing task coordinate)",
+          "anterior_deltoid (no agreeing task coordinate)",
+          "latissimus_dorsi (shoulder_external_rotation sign -1 against required +1)"
+        ]
+      },
+      "score_path": "static_opt/lat_pulldown_as_face_pull/score.json",
+      "emission_path": "static_opt/lat_pulldown_as_face_pull/emission.json",
+      "playback_path": "static_opt/lat_pulldown_as_face_pull/playback.json"
+    }
+  ]
+}

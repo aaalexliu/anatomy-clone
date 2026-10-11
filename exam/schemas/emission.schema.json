@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "emission.schema.json",
+  "title": "Prototype emission",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "prototype_id",
+    "item_id",
+    "joint_angles",
+    "muscle_roles",
+    "load",
+    "confidence",
+    "provenance"
+  ],
+  "properties": {
+    "prototype_id": {"type": "string", "minLength": 1},
+    "item_id": {"type": "string", "minLength": 1},
+    "joint_angles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unit", "times_s", "coordinates", "values"],
+      "properties": {
+        "unit": {"const": "deg"},
+        "times_s": {"type": "array", "items": {"type": "number"}, "minItems": 2},
+        "coordinates": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "values": {
+          "type": "array",
+          "items": {"type": "array", "items": {"type": "number"}}
+        }
+      }
+    },
+    "muscle_roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["times_s", "names", "roles", "scores"],
+      "properties": {
+        "times_s": {"type": "array", "items": {"type": "number"}},
+        "names": {"type": "array", "items": {"type": "string"}},
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "enum": ["prime_mover", "synergist", "stabilizer", "antagonist", "inactive"]
+            }
+          }
+        },
+        "scores": {
+          "type": "array",
+          "items": {"type": "array", "items": {"type": "number"}}
+        }
+      }
+    },
+    "load": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "direction_known"],
+      "properties": {
+        "description": {"type": "string"},
+        "direction_known": {"type": "boolean"}
+      }
+    },
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["skeleton", "tracker", "estimator", "motion_source", "drive_track_id"],
+      "properties": {
+        "skeleton": {"type": "string"},
+        "tracker": {"type": ["string", "null"]},
+        "estimator": {"type": "string"},
+        "motion_source": {"type": "string"},
+        "drive_track_id": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

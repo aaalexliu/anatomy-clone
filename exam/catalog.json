@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "id": "biceps_flexion",
+      "name": "Biceps flexion",
+      "motion": "biceps_flexion"
+    },
+    {
+      "id": "triceps_extension",
+      "name": "Triceps extension",
+      "motion": "triceps_extension"
+    },
+    {
+      "id": "glute_max_hip_extension",
+      "name": "Glute max hip extension",
+      "motion": "glute_max_hip_extension"
+    },
+    {
+      "id": "elbow_extension_as_biceps_curl",
+      "name": "Biceps curl",
+      "motion": "elbow_extension_as_biceps_curl"
+    },
+    {
+      "id": "squat",
+      "name": "Squat",
+      "motion": "squat"
+    },
+    {
+      "id": "face_pull",
+      "name": "Face pull",
+      "motion": "face_pull"
+    },
+    {
+      "id": "rotator_cuff_force_couple",
+      "name": "Rotator-cuff couple",
+      "motion": "rotator_cuff_force_couple"
+    },
+    {
+      "id": "lat_pulldown_as_face_pull",
+      "name": "Face pull",
+      "motion": "lat_pulldown_as_face_pull"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "id": "face_pull",
+  "claimed_name": "Face pull",
+  "motion_source": "scripted",
+  "skeleton": "toy_sagittal_v1",
+  "fps": 30,
+  "duration_s": 1.0,
+  "load_model": "external",
+  "load": {
+    "description": "Cable pulling forward from the hands.",
+    "direction_known": true,
+    "required_moment_signs": {
+      "shoulder_horizontal_abduction": 1,
+      "shoulder_external_rotation": 1,
+      "scapular_retraction": 1
+    }
+  },
+  "keyframes": [
+    {
+      "t": 0.0,
+      "angles_deg": {
+        "shoulder_abduction": 75,
+        "shoulder_horizontal_abduction": -5,
+        "shoulder_external_rotation": 0,
+        "scapular_retraction": 0,
+        "elbow_flexion": 90
+      }
+    },
+    {
+      "t": 1.0,
+      "angles_deg": {
+        "shoulder_abduction": 80,
+        "shoulder_horizontal_abduction": 35,
+        "shoulder_external_rotation": 40,
+        "scapular_retraction": 22,
+        "elbow_flexion": 90
+      }
+    }
+  ]
+}

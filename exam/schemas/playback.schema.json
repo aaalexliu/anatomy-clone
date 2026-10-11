@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "playback.schema.json",
+  "title": "Render-only playback",
+  "description": "The harness does not read this file.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["prototype_id", "item_id", "fps", "bones", "frames"],
+  "properties": {
+    "prototype_id": {"type": "string"},
+    "item_id": {"type": "string"},
+    "fps": {"type": "number", "exclusiveMinimum": 0},
+    "bones": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [{"type": "string"}, {"type": "string"}],
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "frames": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["t", "joints", "muscles"],
+        "properties": {
+          "t": {"type": "number"},
+          "joints": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {"type": "number"},
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "muscles": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["role", "polyline"],
+              "properties": {
+                "role": {
+                  "enum": ["prime_mover", "synergist", "stabilizer", "antagonist", "inactive"]
+                },
+                "polyline": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {"type": "number"},
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

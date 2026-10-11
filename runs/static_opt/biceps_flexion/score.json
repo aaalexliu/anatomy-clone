@@ -1,0 +1,39 @@
+{
+  "prototype_id": "static_opt",
+  "item_id": "biceps_flexion",
+  "overall": {
+    "status": "pass",
+    "reason": "Top-5 overlap 0.67. Prime movers match the action-table sign. No held-out track."
+  },
+  "legality": {
+    "status": "pass",
+    "reason": "Every frame is inside toy_sagittal_v1 limits."
+  },
+  "joint_path": {
+    "status": "abstain",
+    "reason": "No held-out track."
+  },
+  "muscle_role": {
+    "status": "pass",
+    "reason": "Top-5 overlap 0.67. Prime movers match the action-table sign.",
+    "overlap": 0.6667,
+    "predicted_top5": [
+      "brachialis",
+      "biceps_brachii"
+    ],
+    "reference_working": [
+      "biceps_brachii",
+      "brachialis",
+      "brachioradialis"
+    ],
+    "sign_violations": []
+  },
+  "negative_control": {
+    "status": "not_applicable",
+    "reason": "This item is not a negative control."
+  },
+  "force_couple": {
+    "status": "not_applicable",
+    "reason": "This item has no force-couple claim."
+  }
+}

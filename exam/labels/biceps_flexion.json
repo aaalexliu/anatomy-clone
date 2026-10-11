@@ -1,0 +1,8 @@
+{
+  "id": "biceps_flexion",
+  "prime_movers": ["biceps_brachii", "brachialis"],
+  "synergists": ["brachioradialis"],
+  "stabilizers": [],
+  "antagonists": ["triceps_brachii"],
+  "source": "Textbook elbow flexion, frozen before any prototype run: biceps brachii and brachialis are the prime movers, brachioradialis assists, and triceps brachii opposes. Not taken from Muscle & Motion."
+}
