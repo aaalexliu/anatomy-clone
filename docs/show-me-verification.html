@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How verification works</title>
+  <style>
+    :root {
+      --ink: #1c1915;
+      --muted: #6b645c;
+      --line: #e4ddd4;
+      --paper: #f7f4ef;
+      --card: #fffdfb;
+      --pass: #1f7a4d;
+      --pass-bg: #e7f5ee;
+      --fail: #a33b32;
+      --fail-bg: #fdeceb;
+      --abstain: #8a5a12;
+      --abstain-bg: #fbf3e4;
+      --accent: #2f4a6e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.45 "Iowan Old Style", Palatino, Georgia, serif;
+    }
+    main { max-width: 1080px; margin: 0 auto; padding: 40px 24px 72px; }
+    h1 { font-size: 34px; font-weight: 600; letter-spacing: -0.03em; margin: 0 0 8px; }
+    h2 { font-size: 20px; font-weight: 600; margin: 36px 0 12px; }
+    p { margin: 0 0 12px; }
+    .lede { font-size: 18px; max-width: 68ch; }
+    .muted { color: var(--muted); }
+    .grid { display: grid; gap: 14px; }
+    .two { grid-template-columns: 1fr 1fr; }
+    .three { grid-template-columns: 1.1fr 0.9fr; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .kicker {
+      font: 12px/1.2 ui-sans-serif, system-ui, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    ol, ul { margin: 8px 0 0; padding-left: 18px; }
+    li + li { margin-top: 6px; }
+    code, .mono {
+      font: 13px/1.35 ui-monospace, "SF Mono", Menlo, monospace;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+    th { font: 12px/1.2 ui-sans-serif, system-ui, sans-serif; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr 28px 1fr 28px 1fr;
+      align-items: stretch;
+      gap: 0;
+    }
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 20px;
+    }
+    .tag {
+      display: inline-block;
+      font: 12px/1 ui-sans-serif, system-ui, sans-serif;
+      font-weight: 650;
+      padding: 4px 7px;
+      border-radius: 999px;
+    }
+    .pass { color: var(--pass); background: var(--pass-bg); }
+    .fail { color: var(--fail); background: var(--fail-bg); }
+    .abstain { color: var(--abstain); background: var(--abstain-bg); }
+    .warn {
+      border-left: 3px solid var(--abstain);
+      padding: 8px 12px;
+      background: var(--abstain-bg);
+      border-radius: 0 8px 8px 0;
+    }
+    .slots { display: flex; flex-wrap: wrap; gap: 8px; }
+    .slot {
+      font: 13px/1.3 ui-sans-serif, system-ui, sans-serif;
+      border: 1px dashed #c9c0b6;
+      border-radius: 8px;
+      padding: 8px 10px;
+      background: #fff;
+    }
+    @media (max-width: 800px) {
+      .two, .three, .flow { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); height: 28px; }
+      h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="kicker">anatomy-clone</p>
+    <h1>Verify the claim, not the stack</h1>
+    <p class="lede">Several prototypes can run. One exam scores all of them. A prototype never grades itself.</p>
+
+    <div class="grid two">
+      <section class="card">
+        <div class="kicker">Fixed</div>
+        <ul>
+          <li>Same four exam items for every prototype.</li>
+          <li>Held-out evidence. A second tracker, or labels written before the run.</li>
+          <li>Each score is pass, fail, or abstain.</li>
+          <li>A negative control must fail.</li>
+        </ul>
+      </section>
+      <section class="card">
+        <div class="kicker">Open</div>
+        <div class="slots">
+          <div class="slot">Skeleton: OpenSim, SKEL, other</div>
+          <div class="slot">Tracker: WHAM, HMR, OpenCap, other</div>
+          <div class="slot">Muscles: moment-arm, static opt, learned</div>
+          <div class="slot">Motion: video retarget, Moco, scripted isolate</div>
+          <div class="slot">Draw: lines, fusiform, volume</div>
+        </div>
+        <p class="muted" style="margin-top:12px">Swap any slot. The report schema stays.</p>
+      </section>
+    </div>
+
+    <h2>The harness</h2>
+    <div class="flow">
+      <section class="card">
+        <div class="kicker">1. Reference</div>
+        <p>A person lifting, a teaching clip, or an action table. Not pixels to copy.</p>
+      </section>
+      <div class="arrow" aria-hidden="true">&rarr;</div>
+      <section class="card">
+        <div class="kicker">2. Held-out evidence</div>
+        <p>Pose track from a tracker the prototype did not use. Muscle labels from a table written first.</p>
+      </section>
+      <div class="arrow" aria-hidden="true">&rarr;</div>
+      <section class="card">
+        <div class="kicker">3. Score the emission</div>
+        <p class="mono">joint_angles(t)<br>muscle_roles(t)<br>load<br>confidence</p>
+      </section>
+    </div>
+    <p class="warn" style="margin-top:14px">If playback is "the track, replayed," scoring it against that same track always passes. That test is illegal. The driving track and the scoring track must differ.</p>
+
+    <h2>Four exam items</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>What we claim</th>
+          <th>Score that matters</th>
+          <th>Ignore</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Biceps, triceps, glute max</td>
+          <td>Isolate plays the joint that muscle can move</td>
+          <td>Moment-arm sign vs the action table</td>
+          <td>Video likeness</td>
+        </tr>
+        <tr>
+          <td>Squat, person in frame</td>
+          <td>Replay stays on that person, vasti and glute max do the work</td>
+          <td>Joint path vs held-out track, then muscle-role overlap</td>
+          <td>Skin shading</td>
+        </tr>
+        <tr>
+          <td>Face pull, person in frame</td>
+          <td>Rear deltoid, cuff, mid and lower trap, not a lat row</td>
+          <td>Muscle-role overlap. Scapula may abstain</td>
+          <td>A pretty scapula we did not see</td>
+        </tr>
+        <tr>
+          <td>Rotator-cuff couple</td>
+          <td>Subscapularis opposes infraspinatus and teres minor</td>
+          <td>Line-of-action directions</td>
+          <td>Pose match to the M&amp;M clip</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Starting gates</h2>
+    <p class="muted">Gates for ranking prototypes. Not clinical truth. Tune them after two prototypes exist.</p>
+    <table>
+      <thead>
+        <tr><th>Score</th><th>Pass</th><th>Abstain</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Legality</td>
+          <td>No frame outside a hard joint limit or coupler</td>
+          <td>That joint has no limit in this model</td>
+        </tr>
+        <tr>
+          <td>Joint path</td>
+          <td>Mean error under 10&deg; on visible major joints, none over 20&deg;</td>
+          <td>Under 70% of major joints visible, mirror, cropped limbs</td>
+        </tr>
+        <tr>
+          <td>Muscle role</td>
+          <td>Top-5 overlap at least 0.6, no prime mover with the wrong sign</td>
+          <td>Load direction unknown</td>
+        </tr>
+        <tr>
+          <td>Negative control</td>
+          <td>A lat pulldown labeled "face pull" must fail muscle-role</td>
+          <td>The control clip is too messy to trust</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>What a report looks like</h2>
+    <p class="muted">Illustrative, not a measured run. Two prototypes, one exam.</p>
+    <div class="grid two">
+      <section class="card">
+        <div class="kicker">Prototype A</div>
+        <p>Video retarget + moment-arm paint</p>
+        <p><span class="tag pass">Squat joints pass</span> <span class="tag pass">Squat roles pass</span></p>
+        <p><span class="tag fail">Face pull roles fail</span> <span class="tag abstain">Scapula abstain</span></p>
+        <p><span class="tag pass">Cuff couple pass</span> <span class="tag pass">Negative control fails, as required</span></p>
+      </section>
+      <section class="card">
+        <div class="kicker">Prototype B</div>
+        <p>Same retarget + static optimization</p>
+        <p><span class="tag pass">Squat joints pass</span> <span class="tag pass">Squat roles pass</span></p>
+        <p><span class="tag pass">Face pull roles pass</span> <span class="tag abstain">Scapula abstain</span></p>
+        <p><span class="tag pass">Cuff couple pass</span> <span class="tag fail">Negative control did not fail</span></p>
+      </section>
+    </div>
+    <p style="margin-top:14px">A can draw a squat. It cannot yet tell a face pull from a row. B paints the face pull, but it also paints the decoy, so it is not trusted. Neither wins the whole card. That is the point of leaving more than one prototype alive.</p>
+  </main>
+</body>
+</html>
