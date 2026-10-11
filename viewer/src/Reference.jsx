@@ -38,12 +38,13 @@ export function Reference() {
   }, [])
 
   const frames = playback?.frames?.length || 1
+  const canPlay = Boolean(playback?.playable) && frames > 1
   useEffect(() => {
-    if (!playing || !playback?.motion_recovered) return undefined
+    if (!playing || !canPlay) return undefined
     const fps = playback.fps || 6
     const timer = setInterval(() => setFrame((current) => (current + 1) % frames), 1000 / fps)
     return () => clearInterval(timer)
-  }, [playing, frames, playback])
+  }, [playing, frames, playback, canPlay])
 
   const sample = playback?.frames?.[Math.min(frame, frames - 1)]
   const listed = useMemo(() => listRoles(sample), [sample])
@@ -80,8 +81,8 @@ export function Reference() {
       ) : null}
       {playback ? (
         <div className="transport">
-          <button type="button" onClick={() => setPlaying((value) => !value)} disabled={!playback.motion_recovered}>
-            {playing && playback.motion_recovered ? "Pause" : "Play"}
+          <button type="button" onClick={() => setPlaying((value) => !value)} disabled={!canPlay}>
+            {playing && canPlay ? "Pause" : "Play"}
           </button>
           <input
             type="range"

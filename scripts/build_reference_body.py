@@ -89,21 +89,12 @@ LOCK_ALWAYS = (
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--video", required=True, type=Path)
-    parser.add_argument("--task", type=Path, default=Path("/tmp/pose/pose_landmarker_lite.task"))
-    args = parser.parse_args()
-    if not args.video.is_file():
-        raise SystemExit(f"Reference video not found: {args.video}")
-
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     _write_body()
-    external = external_rotation_sign(MOBL_PATH)
-    tracked = _track(args.video, args.task)
-    motion = _recover_motion(tracked, external)
+    motion = _exercise_motion()
     _write(OUT_DIR / "playback.json", motion)
     print(
-        f"wrote {OUT_DIR / 'playback.json'} recovered={motion['motion_recovered']} "
+        f"wrote {OUT_DIR / 'playback.json'} playable={motion['playable']} "
         f"frames={len(motion['frames'])} side={motion.get('working_side')}"
     )
 
@@ -589,7 +580,9 @@ def _place_on_raj(point_world, parent_name, side, raj, raj_state, mobl, mobl_sta
     raj_body = PARENT_TO_RAJ[parent_name]
     if raj_body in ("humerus", "ulna", "radius", "hand"):
         raj_body = f"{raj_body}_{side[0]}"
-    return _from_body(raj, raj_state, raj_body, relative)
+    # The offset is already in ground anatomical axes. Adding it in the body
+    # frame would spin it again once the elbow is bent.
+    return _body_origin(raj, raj_state, raj_body) + relative
 
 
 def _anat_from_mobl(vector: np.ndarray) -> np.ndarray:
@@ -752,6 +745,171 @@ def _lock(model, name: str) -> None:
 def _body_origin(model, state, name: str) -> np.ndarray:
     point = model.getBodySet().get(name).getTransformInGround(state).p()
     return np.array([point.get(0), point.get(1), point.get(2)], dtype=float)
+
+
+EXERCISE_FPS = 8
+EXERCISE_STEPS = 24
+
+
+def _exercise_motion() -> dict:
+    """Pose the left arm in the cable exercise and sweep external rotation.
+
+    The start pose is the moment-arm posture: upper arm at the side, elbow at
+    90 degrees. The sweep uses the arm_rot_l range endpoint that carries the
+    hand away from the midline. Nothing here is read from the reference video.
+    """
+    import opensim
+
+    opensim.Logger.setLevelString("Off")
+    raj = opensim.Model(str(RAJ_PATH))
+    raj_state = raj.initSystem()
+    _pose_raj_start(raj, raj_state)
+    sweep = _external_sweep_degrees(raj, raj_state)
+    mobl = opensim.Model(str(MOBL_PATH))
+    mobl_state = mobl.initSystem()
+    _pose_mobl_measurement(mobl, mobl_state)
+    roles = _roles(mobl, mobl_state, required_signs(external_rotation_sign(MOBL_PATH)))
+    baked = _bake_muscles(raj, raj_state, mobl, mobl_state, "left", roles)
+    frames = []
+    for index in range(EXERCISE_STEPS + 1):
+        amount = math.sin(math.pi * index / EXERCISE_STEPS)
+        _set_deg(raj, raj_state, "arm_rot_l", sweep * amount)
+        _set_deg(raj, raj_state, "elbow_flex_l", 90.0)
+        frames.append(
+            {
+                "t": round(index / EXERCISE_FPS, 5),
+                "bodies": _body_matrices(raj, raj_state),
+                "muscles": _tubes_from_bake(raj, raj_state, baked),
+            }
+        )
+    return {
+        "kind": "volume",
+        "fps": EXERCISE_FPS,
+        "title": "Shoulder external rotation with cable",
+        "motion_recovered": False,
+        "playable": True,
+        "working_side": "left",
+        "sweep_deg": round(sweep, 2),
+        "method": (
+            "Left arm posed on Rajagopal2016 in the cable exercise: upper arm at the side, "
+            "elbow at 90 degrees, the posture used to read moment arms. "
+            f"arm_rot_l then sweeps {abs(sweep):.0f} degrees so the forearm moves out from "
+            "the midline and returns. That direction is the model's arm_rot_l range, "
+            "not an angle read from the video."
+        ),
+        "note": (
+            "Not an exam item. The harness did not score this clip. "
+            "Shoulder colors are MoBL-ARMS computeMomentArm roles for a cable that resists "
+            "external rotation. No pose landmarks were read from the reference video."
+        ),
+        "frames": frames,
+    }
+
+
+def _pose_raj_start(model, state) -> None:
+    _set_deg(model, state, "arm_flex_l", 0.0)
+    _set_deg(model, state, "arm_add_l", 0.0)
+    _set_deg(model, state, "arm_rot_l", 0.0)
+    _set_deg(model, state, "elbow_flex_l", 90.0)
+
+
+def _pose_mobl_measurement(model, state) -> None:
+    for name, degrees in (
+        ("elbow_flexion", 90.0),
+        ("elv_angle", 0.0),
+        ("shoulder_elv", 0.0),
+        ("shoulder_rot", 0.0),
+    ):
+        _set_deg(model, state, name, degrees)
+
+
+def _set_deg(model, state, name: str, degrees: float) -> None:
+    coord = model.getCoordinateSet().get(name)
+    radians = min(max(math.radians(degrees), coord.getRangeMin()), coord.getRangeMax())
+    coord.setValue(state, radians)
+    model.realizePosition(state)
+
+
+def _external_sweep_degrees(model, state) -> float:
+    """Return the arm_rot_l endpoint that moves the left hand away from midline."""
+    coord = model.getCoordinateSet().get("arm_rot_l")
+    start = _hand_z(model, state)
+    best = 0.0
+    best_z = start
+    for endpoint in (math.degrees(coord.getRangeMin()), math.degrees(coord.getRangeMax())):
+        _set_deg(model, state, "arm_rot_l", endpoint)
+        _set_deg(model, state, "elbow_flex_l", 90.0)
+        z_value = _hand_z(model, state)
+        if z_value < best_z:
+            best_z = z_value
+            best = endpoint
+    _pose_raj_start(model, state)
+    if abs(best) < 1.0 or start - best_z < 0.05:
+        raise RuntimeError("arm_rot_l did not move the left hand away from the midline")
+    return best
+
+
+def _hand_z(model, state) -> float:
+    return float(_body_origin(model, state, "hand_l")[2])
+
+
+def _bake_muscles(raj, raj_state, mobl, mobl_state, side: str, roles: dict[str, str]) -> dict:
+    shift = _shoulder_shift(side)
+    baked = {}
+    for name in SHOULDER_MUSCLES:
+        role = roles[name]
+        if role == "inactive":
+            continue
+        current = mobl.getMuscles().get(name).getGeometryPath().getCurrentPath(mobl_state)
+        stations = []
+        for index in range(current.getSize()):
+            point = current.get(index)
+            parent_name = point.getParentFrame().getName()
+            if parent_name not in PARENT_TO_RAJ:
+                continue
+            ground = point.getLocationInGround(mobl_state)
+            world = _place_on_raj(
+                np.array([ground.get(0), ground.get(1), ground.get(2)], dtype=float),
+                parent_name,
+                side,
+                raj,
+                raj_state,
+                mobl,
+                mobl_state,
+                shift,
+            )
+            body_name = _raj_body_name(parent_name, side)
+            rotation, origin = _body_pose(raj, raj_state, body_name)
+            stations.append((body_name, rotation.T @ (world - origin)))
+        if len(stations) >= 2:
+            baked[name] = {"role": role, "label": LABELS[name], "stations": stations}
+    return baked
+
+
+def _raj_body_name(parent_name: str, side: str) -> str:
+    body_name = PARENT_TO_RAJ[parent_name]
+    if body_name in ("humerus", "ulna", "radius", "hand"):
+        return f"{body_name}_{side[0]}"
+    return body_name
+
+
+def _tubes_from_bake(model, state, baked: dict) -> dict:
+    tubes = {}
+    for name, spec in baked.items():
+        polyline = []
+        for body_name, local in spec["stations"]:
+            rotation, origin = _body_pose(model, state, body_name)
+            world = rotation @ local + origin
+            polyline.append([round(float(value), 4) for value in world])
+        tubes[name] = {"role": spec["role"], "label": spec["label"], "polyline": polyline}
+    return tubes
+
+
+def _body_pose(model, state, name: str) -> tuple[np.ndarray, np.ndarray]:
+    transform = model.getBodySet().get(name).getTransformInGround(state)
+    rotation = np.array([[transform.R().get(row, col) for col in range(3)] for row in range(3)])
+    origin = np.array([transform.p().get(index) for index in range(3)], dtype=float)
+    return rotation, origin
 
 
 def _failed(reason: str, side: str = "left") -> dict:

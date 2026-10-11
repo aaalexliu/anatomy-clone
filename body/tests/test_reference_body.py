@@ -101,6 +101,50 @@ class ReferenceBodyTest(unittest.TestCase):
         self.assertTrue(held)
         self.assertGreaterEqual(fraction, 0.6)
 
+    def test_exercise_sweep_moves_the_left_hand_out_and_back(self):
+        import importlib.util
+
+        spec = importlib.util.spec_from_file_location(
+            "build_reference_body", ROOT / "scripts" / "build_reference_body.py"
+        )
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        motion = module._exercise_motion()
+        self.assertTrue(motion["playable"])
+        self.assertFalse(motion["motion_recovered"])
+        self.assertGreaterEqual(len(motion["frames"]), 3)
+        self.assertEqual(motion["frames"][0]["muscles"]["INFSP"]["role"], "prime_mover")
+        self.assertNotEqual(motion["frames"][0]["muscles"]["SUBSC"]["role"], "prime_mover")
+
+        def hand_z(frame):
+            matrix = frame["bodies"]["hand_l"]
+            return matrix[14]
+
+        start = hand_z(motion["frames"][0])
+        mid = hand_z(motion["frames"][len(motion["frames"]) // 2])
+        end = hand_z(motion["frames"][-1])
+        self.assertLess(mid, start - 0.08)
+        self.assertAlmostEqual(start, end, delta=0.02)
+        shoulder = motion["frames"][len(motion["frames"]) // 2]["bodies"]["humerus_l"]
+        shoulder_point = (shoulder[12], shoulder[13], shoulder[14])
+        for point in motion["frames"][len(motion["frames"]) // 2]["muscles"]["INFSP"]["polyline"]:
+            distance = sum((point[i] - shoulder_point[i]) ** 2 for i in range(3)) ** 0.5
+            self.assertLess(distance, 0.2)
+
+    def test_builder_does_not_read_the_clip(self):
+        path = ROOT / "scripts" / "build_reference_body.py"
+        tree = ast.parse(path.read_text())
+        for node in tree.body:
+            if isinstance(node, ast.FunctionDef) and node.name == "main":
+                calls = [
+                    child.func.id
+                    for child in ast.walk(node)
+                    if isinstance(child, ast.Call) and isinstance(child.func, ast.Name)
+                ]
+                self.assertNotIn("_track", calls)
+                self.assertNotIn("_recover_motion", calls)
+                self.assertIn("_exercise_motion", calls)
+
     def test_reference_script_does_not_score(self):
         path = ROOT / "scripts" / "build_reference_body.py"
         text = path.read_text()
