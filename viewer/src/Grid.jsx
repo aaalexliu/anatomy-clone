@@ -19,6 +19,10 @@ export function Grid({ index }) {
       <p className="lede">
         Each cell is the harness score for that prototype on that item. Hover for the reason. Click to play the motion and compare the other prototype. This page only reads the scores.
       </p>
+      <p className="lede">
+        <a href="#/reference">Shoulder external rotation with cable</a>
+        {" "}is the reference clip on the full-body model. It is not a scored cell.
+      </p>
       <div className="board">
         <table className="grid">
           <thead>

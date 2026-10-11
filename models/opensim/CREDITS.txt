@@ -10,3 +10,23 @@ License: Creative Commons Attribution 3.0 (CC BY 3.0).
 https://creativecommons.org/licenses/by/3.0/
 
 Geometry meshes are not included. Moment arms do not need them.
+
+Rajagopal2016.osim and Geometry/ are the full-body gait model and its bone
+meshes.
+
+Rajagopal, A., Dembia, C.L., DeMers, M.S., Delp, D.D., Hicks, J.L., Delp, S.L.
+Full-Body Musculoskeletal Model for Muscle-Driven Simulation of Normal and
+Pathological Gait. IEEE Transactions on Biomedical Engineering, 2016.
+License: Creative Commons Attribution 3.0 (CC BY 3.0).
+https://simtk.org/projects/full_body
+
+The arms in that model are torque actuators. MOBL_ARMS_41.osim supplies the
+shoulder muscle paths used for moment arms and the muscle tubes. It is the
+right-arm MoBL-ARMS model (BSD-3-Clause; non-commercial terms are in the file
+header).
+
+Saul, K.R., Hu, X., Goehler, C.M., Vidt, M.E., Daly, M., Velisar, A., Murray, W.M.
+Benchmarking of dynamic simulation predictions in two software platforms using
+an upper limb musculoskeletal model. Computer Methods in Biomechanics and
+Biomedical Engineering, 2015.
+https://github.com/CEINMS-RT/UpperLimbModel
