@@ -1,0 +1,39 @@
+{
+  "prototype_id": "opensim_arm",
+  "item_id": "face_pull",
+  "overall": {
+    "status": "fail",
+    "reason": "Top-5 overlap 0.00 is below 0.60. Predicted none; reference posterior_deltoid, infraspinatus, teres_minor, middle_trapezius, lower_trapezius, rhomboid_major."
+  },
+  "legality": {
+    "status": "pass",
+    "reason": "Every frame is inside arm26 limits."
+  },
+  "joint_path": {
+    "status": "abstain",
+    "reason": "No held-out track."
+  },
+  "muscle_role": {
+    "status": "fail",
+    "reason": "Top-5 overlap 0.00 is below 0.60. Predicted none; reference posterior_deltoid, infraspinatus, teres_minor, middle_trapezius, lower_trapezius, rhomboid_major.",
+    "overlap": 0.0,
+    "predicted_top5": [],
+    "reference_working": [
+      "posterior_deltoid",
+      "infraspinatus",
+      "teres_minor",
+      "middle_trapezius",
+      "lower_trapezius",
+      "rhomboid_major"
+    ],
+    "sign_violations": []
+  },
+  "negative_control": {
+    "status": "not_applicable",
+    "reason": "This item is not a negative control."
+  },
+  "force_couple": {
+    "status": "not_applicable",
+    "reason": "This item has no force-couple claim."
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "prototype_id": "moment_arm",
+  "item_id": "lat_pulldown_as_face_pull",
+  "overall": {
+    "status": "pass",
+    "reason": "Muscle role failed, as required for a negative control."
+  },
+  "legality": {
+    "status": "pass",
+    "reason": "Every frame is inside toy_sagittal_v1 limits."
+  },
+  "joint_path": {
+    "status": "abstain",
+    "reason": "No held-out track."
+  },
+  "muscle_role": {
+    "status": "fail",
+    "reason": "Prime mover with the wrong moment-arm sign: subscapularis (shoulder_external_rotation sign -1 against required +1); pectoralis_major (shoulder_horizontal_abduction sign -1 against required +1; shoulder_external_rotation sign -1 against required +1).",
+    "overlap": 0.0,
+    "predicted_top5": [
+      "subscapularis",
+      "pectoralis_major",
+      "biceps_brachii",
+      "latissimus_dorsi",
+      "brachioradialis"
+    ],
+    "reference_working": [
+      "posterior_deltoid",
+      "infraspinatus",
+      "teres_minor",
+      "middle_trapezius",
+      "lower_trapezius",
+      "rhomboid_major"
+    ],
+    "sign_violations": [
+      "subscapularis (shoulder_external_rotation sign -1 against required +1)",
+      "pectoralis_major (shoulder_horizontal_abduction sign -1 against required +1; shoulder_external_rotation sign -1 against required +1)"
+    ]
+  },
+  "negative_control": {
+    "status": "pass",
+    "reason": "Muscle role failed, as required for a negative control."
+  },
+  "force_couple": {
+    "status": "not_applicable",
+    "reason": "This item has no force-couple claim."
+  }
+}

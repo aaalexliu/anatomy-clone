@@ -1,0 +1,32 @@
+{
+  "source": "Textbook moment signs frozen before any prototype run. +1 means the muscle can produce a positive moment on that coordinate. This table is not taken from Muscle & Motion.",
+  "muscles": {
+    "biceps_brachii": {"shoulder_flexion": 1, "elbow_flexion": 1},
+    "brachialis": {"elbow_flexion": 1},
+    "brachioradialis": {"elbow_flexion": 1},
+    "triceps_brachii": {"shoulder_flexion": -1, "elbow_flexion": -1},
+    "anterior_deltoid": {"shoulder_flexion": 1},
+    "posterior_deltoid": {"shoulder_flexion": -1, "shoulder_horizontal_abduction": 1},
+    "gluteus_maximus": {"hip_flexion": -1},
+    "biceps_femoris": {"hip_flexion": -1, "knee_flexion": 1},
+    "vastus_lateralis": {"knee_flexion": -1},
+    "iliopsoas": {"hip_flexion": 1},
+    "infraspinatus": {"shoulder_external_rotation": 1},
+    "teres_minor": {"shoulder_external_rotation": 1},
+    "subscapularis": {"shoulder_external_rotation": -1},
+    "supraspinatus": {"shoulder_abduction": 1},
+    "middle_trapezius": {"scapular_retraction": 1},
+    "lower_trapezius": {"scapular_retraction": 1},
+    "rhomboid_major": {"scapular_retraction": 1},
+    "latissimus_dorsi": {
+      "shoulder_flexion": -1,
+      "shoulder_abduction": -1,
+      "shoulder_external_rotation": -1
+    },
+    "pectoralis_major": {
+      "shoulder_abduction": -1,
+      "shoulder_horizontal_abduction": -1,
+      "shoulder_external_rotation": -1
+    }
+  }
+}

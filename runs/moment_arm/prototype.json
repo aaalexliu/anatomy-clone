@@ -1,0 +1,5 @@
+{
+  "id": "moment_arm",
+  "name": "Finite-difference moment arm",
+  "estimator": "finite_difference_moment_arm"
+}

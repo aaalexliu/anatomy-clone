@@ -1,0 +1,31 @@
+{
+  "id": "rotator_cuff_force_couple",
+  "claimed_name": "Rotator-cuff force couple",
+  "motion_source": "scripted",
+  "skeleton": "toy_sagittal_v1",
+  "fps": 30,
+  "duration_s": 1.0,
+  "load_model": "concentric",
+  "load": {
+    "description": "No external load. The arm rotates itself.",
+    "direction_known": true
+  },
+  "keyframes": [
+    {
+      "t": 0.0,
+      "angles_deg": {
+        "shoulder_abduction": 30,
+        "shoulder_external_rotation": 0,
+        "elbow_flexion": 70
+      }
+    },
+    {
+      "t": 1.0,
+      "angles_deg": {
+        "shoulder_abduction": 30,
+        "shoulder_external_rotation": 45,
+        "elbow_flexion": 70
+      }
+    }
+  ]
+}

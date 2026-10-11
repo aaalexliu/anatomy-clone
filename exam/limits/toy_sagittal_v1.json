@@ -1,0 +1,14 @@
+{
+  "skeleton": "toy_sagittal_v1",
+  "unit": "deg",
+  "coordinates": {
+    "hip_flexion": {"min": -30, "max": 130},
+    "knee_flexion": {"min": 0, "max": 145},
+    "shoulder_flexion": {"min": -50, "max": 180},
+    "shoulder_abduction": {"min": 0, "max": 180},
+    "shoulder_horizontal_abduction": {"min": -40, "max": 120},
+    "shoulder_external_rotation": {"min": -90, "max": 90},
+    "elbow_flexion": {"min": 0, "max": 150},
+    "scapular_retraction": {"min": -25, "max": 45}
+  }
+}

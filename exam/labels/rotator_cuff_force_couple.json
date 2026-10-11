@@ -1,0 +1,8 @@
+{
+  "id": "rotator_cuff_force_couple",
+  "prime_movers": ["infraspinatus", "teres_minor"],
+  "synergists": [],
+  "stabilizers": [],
+  "antagonists": ["subscapularis"],
+  "source": "Frozen teaching claim, written before this run: during external rotation, infraspinatus and teres minor produce the moment and subscapularis opposes them. Pose match is not the score. Not taken from Muscle & Motion."
+}

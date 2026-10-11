@@ -1,0 +1,8 @@
+{
+  "id": "face_pull",
+  "prime_movers": ["posterior_deltoid", "infraspinatus", "teres_minor"],
+  "synergists": ["middle_trapezius", "lower_trapezius", "rhomboid_major"],
+  "stabilizers": [],
+  "antagonists": ["latissimus_dorsi", "pectoralis_major"],
+  "source": "Frozen before this run from the exam's face-pull set: posterior deltoid, infraspinatus, teres minor, middle trapezius, lower trapezius, and rhomboids. A lat-dominant row is the miss. Not taken from Muscle & Motion media."
+}

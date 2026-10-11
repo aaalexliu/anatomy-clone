@@ -1,0 +1,88 @@
+{
+  "items": [
+    {
+      "id": "biceps_flexion",
+      "label_set": "biceps_flexion",
+      "negative_control": false,
+      "note": "Isolate. No external load.",
+      "task_moments": {"elbow_flexion": 1},
+      "primary_joints": ["elbow_flexion"]
+    },
+    {
+      "id": "triceps_extension",
+      "label_set": "triceps_extension",
+      "negative_control": false,
+      "note": "Isolate. No external load.",
+      "task_moments": {"elbow_flexion": -1},
+      "primary_joints": ["elbow_flexion"]
+    },
+    {
+      "id": "glute_max_hip_extension",
+      "label_set": "glute_max_hip_extension",
+      "negative_control": false,
+      "note": "Isolate. No external load.",
+      "task_moments": {"hip_flexion": -1},
+      "primary_joints": ["hip_flexion"]
+    },
+    {
+      "id": "elbow_extension_as_biceps_curl",
+      "label_set": "biceps_flexion",
+      "negative_control": true,
+      "note": "Elbow-extension clip labeled as a biceps curl",
+      "task_moments": {"elbow_flexion": 1},
+      "primary_joints": ["elbow_flexion"]
+    },
+    {
+      "id": "squat",
+      "label_set": "squat",
+      "negative_control": false,
+      "note": "Scripted squat with a vertical load over the midfoot. No held-out person track.",
+      "task_moments": {"hip_flexion": -1, "knee_flexion": -1},
+      "primary_joints": ["hip_flexion", "knee_flexion"]
+    },
+    {
+      "id": "face_pull",
+      "label_set": "face_pull",
+      "negative_control": false,
+      "note": "Scripted face pull. The load is a cable pulling forward from the hands. No held-out person track.",
+      "task_moments": {
+        "shoulder_horizontal_abduction": 1,
+        "shoulder_external_rotation": 1,
+        "scapular_retraction": 1
+      },
+      "primary_joints": [
+        "shoulder_horizontal_abduction",
+        "shoulder_external_rotation",
+        "scapular_retraction"
+      ]
+    },
+    {
+      "id": "rotator_cuff_force_couple",
+      "label_set": "rotator_cuff_force_couple",
+      "negative_control": false,
+      "note": "Teaching claim: subscapularis opposes infraspinatus and teres minor. Not a pose match.",
+      "task_moments": {"shoulder_external_rotation": 1},
+      "primary_joints": ["shoulder_external_rotation"],
+      "force_couple": {
+        "coordinate": "shoulder_external_rotation",
+        "groups": [["subscapularis"], ["infraspinatus", "teres_minor"]]
+      }
+    },
+    {
+      "id": "lat_pulldown_as_face_pull",
+      "label_set": "face_pull",
+      "negative_control": true,
+      "note": "Lat pulldown clip labeled as a face pull",
+      "task_moments": {
+        "shoulder_horizontal_abduction": 1,
+        "shoulder_external_rotation": 1,
+        "scapular_retraction": 1
+      },
+      "primary_joints": [
+        "shoulder_horizontal_abduction",
+        "shoulder_external_rotation",
+        "scapular_retraction"
+      ]
+    }
+  ]
+}

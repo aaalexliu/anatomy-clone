@@ -1,0 +1,38 @@
+{
+  "prototype_id": "static_opt",
+  "item_id": "triceps_extension",
+  "overall": {
+    "status": "pass",
+    "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign. No held-out track."
+  },
+  "legality": {
+    "status": "pass",
+    "reason": "Every frame is inside toy_sagittal_v1 limits."
+  },
+  "joint_path": {
+    "status": "abstain",
+    "reason": "No held-out track."
+  },
+  "muscle_role": {
+    "status": "pass",
+    "reason": "Top-5 overlap 1.00. Prime movers match the action-table sign.",
+    "overlap": 1.0,
+    "predicted_top5": [
+      "triceps_brachii",
+      "anterior_deltoid",
+      "pectoralis_major"
+    ],
+    "reference_working": [
+      "triceps_brachii"
+    ],
+    "sign_violations": []
+  },
+  "negative_control": {
+    "status": "not_applicable",
+    "reason": "This item is not a negative control."
+  },
+  "force_couple": {
+    "status": "not_applicable",
+    "reason": "This item has no force-couple claim."
+  }
+}

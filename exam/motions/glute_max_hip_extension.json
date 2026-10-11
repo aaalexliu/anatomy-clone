@@ -1,0 +1,33 @@
+{
+  "id": "glute_max_hip_extension",
+  "claimed_name": "Glute max hip extension",
+  "motion_source": "scripted_isolate",
+  "skeleton": "toy_sagittal_v1",
+  "fps": 30,
+  "duration_s": 1.0,
+  "load_model": "concentric",
+  "load": {
+    "description": "No external load. The limb moves itself.",
+    "direction_known": true
+  },
+  "keyframes": [
+    {
+      "t": 0.0,
+      "angles_deg": {
+        "hip_flexion": 70,
+        "knee_flexion": 20,
+        "shoulder_flexion": 0,
+        "elbow_flexion": 10
+      }
+    },
+    {
+      "t": 1.0,
+      "angles_deg": {
+        "hip_flexion": 0,
+        "knee_flexion": 20,
+        "shoulder_flexion": 0,
+        "elbow_flexion": 10
+      }
+    }
+  ]
+}

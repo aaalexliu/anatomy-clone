@@ -1,0 +1,5 @@
+{
+  "id": "static_opt",
+  "name": "Static optimization",
+  "estimator": "static_optimization"
+}

@@ -1,0 +1,8 @@
+{
+  "skeleton": "arm26",
+  "unit": "deg",
+  "coordinates": {
+    "shoulder_flexion": {"min": -90, "max": 180},
+    "elbow_flexion": {"min": 0, "max": 130}
+  }
+}

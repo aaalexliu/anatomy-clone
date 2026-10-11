@@ -1,0 +1,8 @@
+{
+  "id": "squat",
+  "prime_movers": ["gluteus_maximus", "vastus_lateralis"],
+  "synergists": ["biceps_femoris"],
+  "stabilizers": [],
+  "antagonists": ["iliopsoas"],
+  "source": "Textbook squat under a vertical load, frozen before this run: gluteus maximus and the vasti extend the hip and knee. Vastus lateralis stands in for the vasti on this toy skeleton. Biceps femoris assists at the hip. Iliopsoas opposes hip extension. Not taken from Muscle & Motion."
+}

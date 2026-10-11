@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "score.schema.json",
+  "title": "Harness score",
+  "type": "object",
+  "required": [
+    "prototype_id",
+    "item_id",
+    "overall",
+    "legality",
+    "joint_path",
+    "muscle_role",
+    "negative_control"
+  ],
+  "properties": {
+    "prototype_id": {"type": "string"},
+    "item_id": {"type": "string"},
+    "overall": {"$ref": "#/$defs/verdict"},
+    "legality": {"$ref": "#/$defs/verdict"},
+    "joint_path": {"$ref": "#/$defs/verdict"},
+    "muscle_role": {"$ref": "#/$defs/verdict"},
+    "negative_control": {"$ref": "#/$defs/verdict"},
+    "force_couple": {"$ref": "#/$defs/verdict"}
+  },
+  "$defs": {
+    "verdict": {
+      "type": "object",
+      "required": ["status", "reason"],
+      "properties": {
+        "status": {
+          "enum": ["pass", "fail", "abstain", "invalid", "not_applicable"]
+        },
+        "reason": {"type": "string"}
+      }
+    }
+  }
+}

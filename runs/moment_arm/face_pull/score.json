@@ -1,0 +1,45 @@
+{
+  "prototype_id": "moment_arm",
+  "item_id": "face_pull",
+  "overall": {
+    "status": "pass",
+    "reason": "Top-5 overlap 0.80. Prime movers match the action-table sign. No held-out track."
+  },
+  "legality": {
+    "status": "pass",
+    "reason": "Every frame is inside toy_sagittal_v1 limits."
+  },
+  "joint_path": {
+    "status": "abstain",
+    "reason": "No held-out track."
+  },
+  "muscle_role": {
+    "status": "pass",
+    "reason": "Top-5 overlap 0.80. Prime movers match the action-table sign.",
+    "overlap": 0.8,
+    "predicted_top5": [
+      "posterior_deltoid",
+      "middle_trapezius",
+      "rhomboid_major",
+      "lower_trapezius",
+      "triceps_brachii"
+    ],
+    "reference_working": [
+      "posterior_deltoid",
+      "infraspinatus",
+      "teres_minor",
+      "middle_trapezius",
+      "lower_trapezius",
+      "rhomboid_major"
+    ],
+    "sign_violations": []
+  },
+  "negative_control": {
+    "status": "not_applicable",
+    "reason": "This item is not a negative control."
+  },
+  "force_couple": {
+    "status": "not_applicable",
+    "reason": "This item has no force-couple claim."
+  }
+}

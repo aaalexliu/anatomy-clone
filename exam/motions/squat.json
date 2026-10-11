@@ -1,0 +1,46 @@
+{
+  "id": "squat",
+  "claimed_name": "Squat",
+  "motion_source": "scripted",
+  "skeleton": "toy_sagittal_v1",
+  "fps": 30,
+  "duration_s": 1.0,
+  "load_model": "external",
+  "load": {
+    "description": "Vertical load over the midfoot.",
+    "direction_known": true,
+    "required_moment_signs": {
+      "hip_flexion": -1,
+      "knee_flexion": -1
+    }
+  },
+  "keyframes": [
+    {
+      "t": 0.0,
+      "angles_deg": {
+        "hip_flexion": 20,
+        "knee_flexion": 15,
+        "shoulder_flexion": 40,
+        "elbow_flexion": 10
+      }
+    },
+    {
+      "t": 0.5,
+      "angles_deg": {
+        "hip_flexion": 100,
+        "knee_flexion": 110,
+        "shoulder_flexion": 50,
+        "elbow_flexion": 10
+      }
+    },
+    {
+      "t": 1.0,
+      "angles_deg": {
+        "hip_flexion": 20,
+        "knee_flexion": 15,
+        "shoulder_flexion": 40,
+        "elbow_flexion": 10
+      }
+    }
+  ]
+}
