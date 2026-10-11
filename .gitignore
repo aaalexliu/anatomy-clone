@@ -5,3 +5,9 @@ viewer/node_modules/
 viewer/dist/
 .DS_Store
 opensim.log
+*.sto
+# Local YouTube reference. Never commit the clip, its audio, or frames from it.
+local-reference/
+*.mp4
+*.m4a
+*.webm

@@ -136,6 +136,7 @@ table.grid th {
 }
 .panel h2 { margin: 0 0 8px; font-size: 20px; }
 .stage { height: 440px; border-radius: 8px; overflow: hidden; background: #efeae3; }
+.stage-tall { height: 680px; }
 .stage canvas { display: block; width: 100%; height: 100%; }
 .meta { margin: 8px 0 0; font: 13px/1.4 ui-sans-serif, system-ui, sans-serif; color: var(--muted); }
 .roles { margin: 8px 0 0; padding: 0; list-style: none; font: 13px/1.35 ui-sans-serif, system-ui, sans-serif; }
@@ -167,5 +168,5 @@ select.swap { border-radius: 8px; }
 @media (max-width: 800px) {
   h1 { font-size: 28px; }
   .compare { grid-template-columns: 1fr; }
-  .stage { height: 340px; }
+  .stage, .stage-tall { height: 420px; }
 }

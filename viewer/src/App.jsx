@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { Detail } from "./Detail"
 import { Grid } from "./Grid"
+import { Reference } from "./Reference"
 
 export function App() {
   const [index, setIndex] = useState(null)
@@ -39,8 +40,9 @@ export function App() {
       <main className="app">
         {error ? <p>{error}</p> : null}
         {!index && !error ? <p className="muted">Loading scores…</p> : null}
-        {index && route.item ? <Detail index={index} itemId={route.item} leftId={route.left} /> : null}
-        {index && !route.item ? <Grid index={index} /> : null}
+        {route.reference ? <Reference /> : null}
+        {index && !route.reference && route.item ? <Detail index={index} itemId={route.item} leftId={route.left} /> : null}
+        {index && !route.reference && !route.item ? <Grid index={index} /> : null}
       </main>
     </>
   )
@@ -49,8 +51,9 @@ export function App() {
 function parseHash(hash) {
   const [path] = hash.replace(/^#/, "").split("?")
   const parts = path.split("/").filter(Boolean)
+  if (parts[0] === "reference") return { item: "", left: "", reference: true }
   if (parts[0] === "item" && parts[1]) {
-    return { item: decodeURIComponent(parts[1]), left: parts[2] ? decodeURIComponent(parts[2]) : "" }
+    return { item: decodeURIComponent(parts[1]), left: parts[2] ? decodeURIComponent(parts[2]) : "", reference: false }
   }
-  return { item: "", left: "" }
+  return { item: "", left: "", reference: false }
 }
