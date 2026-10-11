@@ -1,0 +1,40 @@
+{
+  "prototype_id": "opensim_arm",
+  "item_id": "elbow_extension_as_biceps_curl",
+  "overall": {
+    "status": "pass",
+    "reason": "Muscle role failed, as required for a negative control."
+  },
+  "legality": {
+    "status": "pass",
+    "reason": "Every frame is inside arm26 limits."
+  },
+  "joint_path": {
+    "status": "abstain",
+    "reason": "No held-out track."
+  },
+  "muscle_role": {
+    "status": "fail",
+    "reason": "Prime mover with the wrong moment-arm sign: triceps_brachii (elbow_flexion sign -1 against required +1).",
+    "overlap": 0.0,
+    "predicted_top5": [
+      "triceps_brachii"
+    ],
+    "reference_working": [
+      "biceps_brachii",
+      "brachialis",
+      "brachioradialis"
+    ],
+    "sign_violations": [
+      "triceps_brachii (elbow_flexion sign -1 against required +1)"
+    ]
+  },
+  "negative_control": {
+    "status": "pass",
+    "reason": "Muscle role failed, as required for a negative control."
+  },
+  "force_couple": {
+    "status": "not_applicable",
+    "reason": "This item has no force-couple claim."
+  }
+}

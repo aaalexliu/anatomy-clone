@@ -1,0 +1,12 @@
+arm26.osim is the OpenSim Arm26 model.
+
+Holzbaur, K.R.S., Murray, W.M., Delp, S.L. A Model of the Upper Extremity for
+Simulating Musculoskeletal Surgery and Analyzing Neuromuscular Control.
+Annals of Biomedical Engineering, vol 33, pp 829–840, 2005.
+
+Adapted by the OpenSim Development Team (Reinbolt, J; Seth, A; Habib, A; Hamner, S)
+from a model originally created by Katherine Holzbaur (11/22/04).
+License: Creative Commons Attribution 3.0 (CC BY 3.0).
+https://creativecommons.org/licenses/by/3.0/
+
+Geometry meshes are not included. Moment arms do not need them.

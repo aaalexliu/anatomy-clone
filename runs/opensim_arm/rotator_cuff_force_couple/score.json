@@ -1,0 +1,35 @@
+{
+  "prototype_id": "opensim_arm",
+  "item_id": "rotator_cuff_force_couple",
+  "overall": {
+    "status": "fail",
+    "reason": "Top-5 overlap 0.00 is below 0.60. Predicted none; reference infraspinatus, teres_minor."
+  },
+  "legality": {
+    "status": "pass",
+    "reason": "Every frame is inside arm26 limits."
+  },
+  "joint_path": {
+    "status": "abstain",
+    "reason": "No held-out track."
+  },
+  "muscle_role": {
+    "status": "fail",
+    "reason": "Top-5 overlap 0.00 is below 0.60. Predicted none; reference infraspinatus, teres_minor.",
+    "overlap": 0.0,
+    "predicted_top5": [],
+    "reference_working": [
+      "infraspinatus",
+      "teres_minor"
+    ],
+    "sign_violations": []
+  },
+  "negative_control": {
+    "status": "not_applicable",
+    "reason": "This item is not a negative control."
+  },
+  "force_couple": {
+    "status": "fail",
+    "reason": "One side of the force couple is missing from the roles."
+  }
+}

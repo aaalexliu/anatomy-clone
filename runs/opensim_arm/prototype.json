@@ -1,0 +1,5 @@
+{
+  "id": "opensim_arm",
+  "name": "OpenSim arm26 moment arm",
+  "estimator": "opensim_moment_arm"
+}
